@@ -16,3 +16,9 @@ figwheel_server.log
 /js
 /out
 /resources/public/js/compiled
+
+# Ignore files open in editors
+*.swp
+docs/
+*~
+*/~

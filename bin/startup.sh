@@ -1,7 +1,7 @@
 #!/bin/bash
 
 INDEX=/usr/share/nginx/html/index.html
-VERSION=`head -n1 project.clj | grep -oP "[\d]+\.[\d]+\.[\d]+(-SNAPSHOT)?(-RC[\echo+])?"`
+VERSION=`bin/version`
 
 sed -i "s!<ARDHOST>!${ARD_HOST}!g"    ${INDEX}
 sed -i "s!<CHIPMUNKHOST>!${CHIPMUNK_HOST}!g"  ${INDEX}
@@ -14,4 +14,4 @@ if [ ${DATA_TYPE} == "ard" ]; then
   sed -i "s/\/\/ARD//g" ${INDEX}
 fi
 
-/usr/sbin/nginx -g 'daemon off;' & java -jar /lcmap-mastodon-${VERSION}-standalone.jar
+/usr/sbin/nginx -g 'daemon off;' & java -jar /app/target/lcmap-mastodon-${VERSION}-standalone.jar

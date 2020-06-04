@@ -11,26 +11,37 @@ ENV nginxversion="1.16.1-1" \
     osversion="7" \
     elversion="7"
 
-RUN yum install -y wget openssl sed &&\
+RUN yum install -y curl wget openssl sed &&\
     yum -y autoremove &&\
     yum clean all &&\
     wget http://nginx.org/packages/$os/$osversion/x86_64/RPMS/nginx-$nginxversion.el$elversion.ngx.x86_64.rpm &&\
     rpm -iv nginx-$nginxversion.el$elversion.ngx.x86_64.rpm
 
-## Install Mastodon
-COPY resources/public/index.html /usr/share/nginx/html/index.html
-COPY resources/public/js/compiled/mastodon_min.js /usr/share/nginx/html/js/compiled/mastodon_min.js
-COPY resources/public/js/jquery.min.js /usr/share/nginx/html/js/jquery.min.js
-COPY resources/public/css /usr/share/nginx/html/css/
-COPY resources/public/images /usr/share/nginx/html/images/
-COPY resources/log4j.properties /log4j.properties
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY startup.sh /startup.sh
-COPY project.clj /project.clj
-COPY target/lcmap-mastodon-*-standalone.jar /
+ENV LEIN_ROOT ok
+ENV LEIN /usr/local/bin/lein
+RUN curl -L -o $LEIN \
+    https://raw.githubusercontent.com/technomancy/leiningen/2.8.3/bin/lein
+RUN chmod 755 $LEIN
+RUN $LEIN
 
+RUN mkdir /app
+COPY . /app/
+WORKDIR /app
+RUN lein uberjar
+
+## Install Mastodon
+RUN cp /app/resources/public/index.html /usr/share/nginx/html/index.html && \
+    mkdir -p /usr/share/nginx/html/js/compiled && \
+    cp /app/resources/public/js/compiled/mastodon_min.js /usr/share/nginx/html/js/compiled/mastodon_min.js && \
+    cp /app/resources/public/js/jquery.min.js /usr/share/nginx/html/js/jquery.min.js && \
+    cp -r /app/resources/public/css /usr/share/nginx/html/css/ && \
+    cp -r /app/resources/public/images /usr/share/nginx/html/images/ && \
+    cp /app/resources/log4j.properties /log4j.properties && \
+    cp /app/default.conf /etc/nginx/conf.d/default.conf
+    
 RUN mkdir /data
 
 # Run!
-CMD /startup.sh
+#CMD /startup.sh
+CMD /app/bin/startup.sh
 
