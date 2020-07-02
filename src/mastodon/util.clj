@@ -1,6 +1,5 @@
-(ns mastodon.cljc.util
-  (:require [clojure.string :as string]
-  #? (:cljs [cljs.reader :refer [read-string]])))
+(ns mastodon.util
+  (:require [clojure.string :as string]))
 
 (defn get-map-val
   "Return particular value for a map, for the conditional key and value."
@@ -59,14 +58,9 @@
 
 (defn try-string
   [input]
-  #? (:clj (try
-             (read-string input)
-             (catch Exception ex
-               nil))
-      :cljs (try
-              (read-string input)
-              (catch :default e
-                nil))))
+  (try
+    (read-string input)
+    (catch Exception ex nil)))
 
 (defn exception-cause-trace
   "Returns the exceptions cause and stack trace.

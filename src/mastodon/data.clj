@@ -1,7 +1,7 @@
-(ns mastodon.cljc.data
+(ns mastodon.data
   (:require [clojure.string :as string]
             [clojure.set :as set]
-            [mastodon.cljc.util :as util]))
+            [mastodon.util :as util]))
 
 (def L457-ard-map
   "Band mapping for Landsat missions 4 through 7."

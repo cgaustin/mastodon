@@ -1,12 +1,12 @@
-(ns mastodon.clj.persistance
+(ns mastodon.persistance
   (:require [org.httpkit.client :as http]
             [cheshire.core :as json]
             [clojure.string :as string]
             [environ.core :as environ]
-            [mastodon.clj.config :refer [config]]
-            [mastodon.cljc.data :as data]
-            [mastodon.clj.config :refer [config]]
-            [mastodon.cljc.util :as util]
+            [mastodon.config :refer [config]]
+            [mastodon.data :as data]
+            [mastodon.config :refer [config]]
+            [mastodon.util :as util]
             [clojure.tools.logging :as log]))
 
 (defmulti resource-path

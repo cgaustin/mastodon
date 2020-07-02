@@ -1,8 +1,8 @@
-(ns mastodon.clj.persistance-test
+(ns mastodon.persistance-test
   (:use org.httpkit.fake)
   (:require [clojure.test :refer :all]
-            [mastodon.clj.config :as config]
-            [mastodon.clj.persistance :as persist]
+            [mastodon.config :as config]
+            [mastodon.persistance :as persist]
             [org.httpkit.client :as http]))
 
 

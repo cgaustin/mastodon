@@ -1,4 +1,4 @@
-(ns mastodon.clj.config
+(ns mastodon.config
   [:require [environ.core :as environ]])
 
 (defn chipmunk-inventory

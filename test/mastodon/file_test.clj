@@ -1,7 +1,7 @@
-(ns mastodon.clj.file-test
+(ns mastodon.file-test
   (:require [clojure.test :refer :all]
             [org.satta.glob :as glob]
-            [mastodon.clj.file :as file]))
+            [mastodon.file :as file]))
 
 (deftest strip-path-test
   (is (= "foo.tar"

@@ -36,18 +36,11 @@ repl:
 
 replincs:
 	@echo "(require '[mastodon.http :as mhttp] '[mastodon.core :as mcore] '[mastodon.data :as testdata])"
-	@echo "(require '[cljs.core.async :refer [<! >! chan pipeline]])"
-	@echo "(require-macros '[cljs.core.async.macros :refer [go go-loop]])"
 
 runtests:
-	lein doo phantom test once
 	lein test	
 
-build-min-js:
-	lein cljsbuild once min
-
 clean:
-	@rm -rf resources/public/js/compiled
 	@rm -rf target/
 	@rm -rf docs/
 

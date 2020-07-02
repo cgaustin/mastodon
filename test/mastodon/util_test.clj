@@ -1,8 +1,8 @@
-(ns mastodon.cljc.util-test
+(ns mastodon.util-test
   (:require [clojure.test :refer :all]
             [clojure.string :as string]
-            [mastodon.cljc.data :as data]
-            [mastodon.cljc.util :as util]))
+            [mastodon.data :as data]
+            [mastodon.util :as util]))
 
 (def xmap (hash-map :a "a" :b "b" :c "c" :d "foo"))
 (def xmaplist [(hash-map :a "a" :b "b" :c "c" :d "foo")

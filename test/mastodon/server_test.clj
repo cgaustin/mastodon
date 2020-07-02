@@ -1,13 +1,13 @@
-(ns mastodon.clj.server-test
+(ns mastodon.server-test
   (:use org.httpkit.fake)
   (:require [clojure.test :refer :all]
             [clojure.string :as string]
-            [mastodon.clj.config :as config]
-            [mastodon.clj.server :as server]
-            [mastodon.clj.file :as file]
+            [mastodon.config :as config]
+            [mastodon.server :as server]
+            [mastodon.file :as file]
             [ring.mock.request :as mock]
-            [mastodon.clj.persistance :as persist]
-            [mastodon.clj.validation :as validation]))
+            [mastodon.persistance :as persist]
+            [mastodon.validation :as validation]))
 
 (def tiflist ["http://192.168.43.5/ard/oli_tirs/ARD_Tile/2013/CU/005/015/LC08_CU_005015_20130415_20171016_C01_V01_SR.tar/LC08_CU_005015_20130415_20171016_C01_V01_SRB4.tif"
               "http://192.168.43.5/ard/tm/ARD_Tile/1984/CU/005/015/LT05_CU_005015_19840508_20170912_C01_V01_BT.tar/LT05_CU_005015_19840508_20170912_C01_V01_BTB6.tif"

@@ -1,7 +1,7 @@
-(ns mastodon.clj.config-test
+(ns mastodon.config-test
   (:require [clojure.test :refer :all]
             [environ.core :as environ]
-            [mastodon.clj.config :as config]))
+            [mastodon.config :as config]))
 
 (deftest test-try-read-valid
   (is (= (config/try-read "100") 100)))

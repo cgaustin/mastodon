@@ -1,6 +1,6 @@
-(ns mastodon.cljc.data-test
+(ns mastodon.data-test
   (:require [clojure.test :refer :all] 
-            [mastodon.cljc.data :as data]))
+            [mastodon.data :as data]))
 
 (deftest ard-tar-name-test
   (let [tif-name "LC08_CU_022010_20131211_20171016_C01_V01_PIXELQA.tif"

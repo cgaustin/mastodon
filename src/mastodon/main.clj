@@ -1,13 +1,13 @@
-(ns mastodon.clj.main
+(ns mastodon.main
   (:gen-class)
-  (:require [cheshire.core            :refer [parse-string]]
-            [mastodon.clj.config      :refer [config]]
-            [mastodon.cljc.util       :as util]
-            [mastodon.clj.persistance :as persist]
-            [mastodon.clj.validation  :as validation]
-            [org.httpkit.client       :as http]
-            [mastodon.clj.server      :as server]
-            [clojure.tools.logging    :as log]))
+  (:require [cheshire.core         :refer [parse-string]]
+            [mastodon.config       :refer [config]]
+            [mastodon.util         :as util]
+            [mastodon.persistance  :as persist]
+            [mastodon.validation   :as validation]
+            [org.httpkit.client    :as http]
+            [mastodon.server       :as server]
+            [clojure.tools.logging :as log]))
 
 (defn pmap-partitions
   "Realize func with pmap over a collection of collections." 

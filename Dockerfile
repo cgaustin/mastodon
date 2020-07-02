@@ -30,13 +30,7 @@ WORKDIR /app
 RUN lein uberjar
 
 ## Install Mastodon
-RUN cp /app/resources/public/index.html /usr/share/nginx/html/index.html && \
-    mkdir -p /usr/share/nginx/html/js/compiled && \
-    cp /app/resources/public/js/compiled/mastodon_min.js /usr/share/nginx/html/js/compiled/mastodon_min.js && \
-    cp /app/resources/public/js/jquery.min.js /usr/share/nginx/html/js/jquery.min.js && \
-    cp -r /app/resources/public/css /usr/share/nginx/html/css/ && \
-    cp -r /app/resources/public/images /usr/share/nginx/html/images/ && \
-    cp /app/resources/log4j.properties /log4j.properties && \
+RUN cp /app/resources/log4j.properties /log4j.properties && \
     cp /app/default.conf /etc/nginx/conf.d/default.conf
     
 RUN mkdir /data

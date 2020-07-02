@@ -1,4 +1,4 @@
-(ns mastodon.clj.validation
+(ns mastodon.validation
   (:require [org.httpkit.client :as http]
             [clojure.core :as core]
             [clojure.tools.logging :as log]))

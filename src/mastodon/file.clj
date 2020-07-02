@@ -1,8 +1,8 @@
-(ns mastodon.clj.file
+(ns mastodon.file
   (:require [clojure.string :as string]
             [clojure.tools.logging :as log]
             [org.satta.glob :as glob]
-            [mastodon.cljc.util :as util]))
+            [mastodon.util :as util]))
 
 (defn strip-path
   "Return the filename, minus the path"

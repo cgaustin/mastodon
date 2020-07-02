@@ -1,7 +1,7 @@
-(ns mastodon.clj.validation-test
+(ns mastodon.validation-test
   (:use org.httpkit.fake)
   (:require [clojure.test :refer :all] 
-            [mastodon.clj.validation :as validation]))
+            [mastodon.validation :as validation]))
 
 (deftest http?-test
   (with-fake-http [{:url "http://foo.com" :method :get} {:status 200 :body "okay"}]

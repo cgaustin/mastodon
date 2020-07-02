@@ -1,6 +1,3 @@
-.. image:: https://travis-ci.org/USGS-EROS/lcmap-mastodon.svg?branch=develop
-    :target: https://travis-ci.org/USGS-EROS/lcmap-mastodon
-
 
 Mastodon
 ========
@@ -8,7 +5,7 @@ Tools for facilitating LCMAP data curation.
 
 Features
 --------
-* Provide both a UI and a CLI for directing data ingest to the IWDS
+* Provide a CLI for directing data ingest to the IWDS
 * Handle parallelization of data ingest requests
 
 Running
@@ -75,18 +72,12 @@ Defaults to 120000 (2 minutes).
 ${INGEST_TIMEOUT} - defines, in milliseconds, the HTTP request timeout for ingest requests against lcmap-chipmunk.
 Defaults to 120000 (2 minutes).
 
-User Interface
---------------
-The Mastodon UI is simple HTML and javascript. If you exposed port 8080 as in the previous example, 
-the UI will be available at http://127.0.0.1:8080
-
 
 CLI Interaction
 ---------------
-You have the option to manage ingest from the command line as well.  Just build an uberjar with
-leiningen, and export environment variables for the ${CHIPMUNK_HOST}, ${PARTITION_LEVEL}, ${DATA_TYPE}
-and ${ARD_HOST}.  The ${ARD_HOST} is an instance of Mastodon running in server mode. It is this Mastodon instance
-which exposes the ARD over HTTP for ingest.
+Build an uberjar with leiningen, and export environment variables for the ${CHIPMUNK_HOST}, ${PARTITION_LEVEL}, 
+${DATA_TYPE} and ${ARD_HOST}.  The ${ARD_HOST} is an instance of Mastodon running in server mode. It is this Mastodon 
+instance which exposes the ARD over HTTP for ingest.
 
 If you want to ingest Auxiliary data instead of ARD, you'll need to set the DATA_TYPE accordingly, and also
 define ${AUX_HOST}.
@@ -108,39 +99,6 @@ With your jar built, and your environment setup
 
 And follow the prompts. If you want to automatically ingest any previously uningested data, 
 add `-y` after the tile id.
-
-
-Development Clojurescript
--------------------------
-
-To get an interactive development environment run:
-
-.. code-block:: bash
-
-    lein figwheel
-
-and open your browser at http://localhost:3449/.
-This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
-
-.. code-block:: javascript
-
-    (js/alert "Am I connected?")
-
-and you should see an alert in the browser window.
-
-To clean all compiled files:
-
-.. code-block:: bash
-
-    lein clean
-
-To create a production build run:
-
-.. code-block:: bash
-
-    lein do clean, cljsbuild once min
 
 
 Development Clojure
