@@ -139,6 +139,21 @@ clojurescript
 
    docker build -t < your tag here > .
 
+Contributing
+------------
+Before committing to this repository, run the following command.
+
+.. code-block:: bash
+
+   git config --local commit.template .gitmessage
+
+
+This will add the LCMAP commit template to `git commit`.
+
+.. code-block:: bash
+
+   jira/lcmap-xxxx: Title
+   Description:
 
 
 License
