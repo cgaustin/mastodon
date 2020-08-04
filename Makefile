@@ -1,13 +1,10 @@
-.PHONY: build tests docs deploy checkdeps repl replincs runtests build-min-js clean docker-build docker-push faux-ard-container chipmunkip deps-up deps-down-d login 
+.PHONY: build tests docs deploy checkdeps repl replincs runtests build-min-js clean docker-build docker-push faux-ard-container chipmunkip deps-up deps-down-d login debug
 
 .DEFAULT_GOAL := build
 VERSION    := `./bin/version`
 IMAGE      := eroslab.cr.usgs.gov:4567/lcmap/mastodon
-BRANCH     := $(or $(CI_COMMIT_REF_NAME),`git rev-parse --abbrev-ref HEAD`)
-BRANCH     := $(shell echo $(BRANCH) | tr / -)
 SHORT_HASH := `git rev-parse --short HEAD`
-BASE_TAG   := $(IMAGE):$(BRANCH)-$(VERSION)-$(SHORT_HASH)-base
-TAG        := $(IMAGE):$(BRANCH)-$(VERSION)-$(SHORT_HASH)
+TAG        := $(IMAGE):$(VERSION)-$(SHORT_HASH)
 
 # LCMAP Standard Makefile targets.  Do not remove.
 
@@ -68,5 +65,8 @@ login:
                          $(CI_REGISTRY), \
           docker login eroslab.cr.usgs.gov:4567)
 
-
+debug:
+	@echo "VERSION: $(VERSION)"
+	@echo "IMAGE: $(IMAGE)"
+	@echo "TAG: $(TAG)"
 
